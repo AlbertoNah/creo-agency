@@ -56,8 +56,8 @@ const GHOST = 'rgba(255,255,255,0.13)'
 // Dark halo around headlines — ensures readability at any scroll position
 const HS = '0 0 80px rgba(0,0,0,0.98), 0 0 28px rgba(0,0,0,0.90), 0 2px 10px rgba(0,0,0,0.80)'
 
-const BOOKING_HREF = 'mailto:hello@creo.agency?subject=Strategy%20Call%20Request'
-const WA_HREF = 'https://wa.me/96171000000'
+const BOOKING_HREF = 'mailto:growthcreo@gmail.com?subject=Strategy%20Call%20Request'
+const WA_HREF = 'https://wa.me/96176924105'
 
 // ─── BEAT 0 — HERO ────────────────────────────────
 function Beat0({ r }: { r: Ref<HTMLDivElement> }) {
@@ -611,13 +611,13 @@ function Beat8({ r }: { r: Ref<HTMLDivElement> }) {
           pointerEvents: 'auto',
         }}>
           <a
-            href="mailto:hello@creo.agency"
+            href="mailto:growthcreo@gmail.com"
             className="link-underline"
             style={{ ...M, fontSize: 'clamp(0.58rem, 0.70vw, 0.72rem)', letterSpacing: '0.13em', color: 'rgba(255,160,96,0.40)', textDecoration: 'none', transition: 'color 0.4s ease' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,160,96,0.75)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,160,96,0.40)' }}
           >
-            hello@creo.agency
+            growthcreo@gmail.com
           </a>
           <span style={{ color: 'rgba(255,255,255,0.10)', userSelect: 'none' }}>·</span>
           <a
@@ -691,7 +691,7 @@ function Chrome() {
         </span>
       </div>
 
-      <a href="mailto:hello@creo.agency" className="chrome-email" style={{
+      <a href="mailto:growthcreo@gmail.com" className="chrome-email" style={{
         position: 'fixed', zIndex: 500,
         top: 'clamp(1.4rem, 3vw, 2.5rem)',
         right: 'clamp(1.6rem, 3.5vw, 3.5rem)',
@@ -703,7 +703,7 @@ function Chrome() {
         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,160,96,0.65)' }}
         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.18)' }}
       >
-        hello@creo.agency
+        growthcreo@gmail.com
       </a>
 
       <div style={{
