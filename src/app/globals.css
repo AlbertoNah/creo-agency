@@ -350,6 +350,14 @@ body::before {
   }
 }
 
+/* ---- Mobile contact links: larger tap targets ---- */
+@media (max-width: 768px) {
+  .link-underline {
+    padding: 0.5rem 0;
+    font-size: 0.70rem !important;
+  }
+}
+
 /* ---- Reduced motion: disable all animations ---- */
 @media (prefers-reduced-motion: reduce) {
   /* Kill grain, cursor transitions, and scroll animations */

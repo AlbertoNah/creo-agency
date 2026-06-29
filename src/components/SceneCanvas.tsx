@@ -243,7 +243,7 @@ const horizonFrag = /* glsl */ `
 // CTA        (p=0.97–1.00): float reduces to 8%, everything settles
 // ─────────────────────────────────────────────
 
-function Camera() {
+function Camera({ isMobile }: { isMobile: boolean }) {
   const { camera } = useThree()
   const lookY = useRef(-0.15)
 
@@ -251,9 +251,11 @@ function Camera() {
     const p = scrollProgress.current
     const t = clock.elapsedTime
 
-    let tz = 9.8 - p * 5.2
-    let ty = 1.8 - p * 1.5
-    let tx = Math.sin(p * Math.PI * 2.0) * 1.55
+    // Mobile keeps camera farther back so the planet stays within the
+    // narrow portrait viewport throughout the entire scroll journey.
+    let tz = isMobile ? 12.0 - p * 1.5 : 9.8 - p * 5.2
+    let ty = isMobile ? 1.4 - p * 1.0  : 1.8 - p * 1.5
+    let tx = Math.sin(p * Math.PI * 2.0) * (isMobile ? 0.25 : 1.55)
     let targetLookY = -0.15
 
     // Astronaut float — two frequencies for organic feel
@@ -264,38 +266,41 @@ function Camera() {
     const sig = sr(p, 0.72, 0.79)
     if (sig > 0.001) {
       const angle = sig * Math.PI * 0.44
-      tx = Math.sin(angle) * 7.8
-      tz = Math.cos(angle) * 7.8
-      ty = -2.1 + sig * 3.4
+      // Mobile: tighter orbit so planet stays centred on portrait screen
+      tx = Math.sin(angle) * (isMobile ? 3.5 : 7.8)
+      tz = Math.cos(angle) * (isMobile ? 5.5 : 7.8)
+      ty = (isMobile ? -1.0 : -2.1) + sig * (isMobile ? 2.0 : 3.4)
       targetLookY = -0.1 + sig * 0.55
     }
 
-    // FOV: compresses during signature (lens gravity), restores slowly
-    const targetFov = 40 - sig * 4
+    // FOV: wider on mobile (portrait aspect needs more horizontal field)
+    // compresses slightly during signature for cinematic weight
+    const baseFov   = isMobile ? 65 : 40
+    const targetFov = baseFov - sig * (isMobile ? 3 : 4)
     ;(camera as THREE.PerspectiveCamera).fov +=
       (targetFov - (camera as THREE.PerspectiveCamera).fov) * 0.03
     ;(camera as THREE.PerspectiveCamera).updateProjectionMatrix()
 
     // ── IDENTITY ────────────────────────────────────────────────────────
     const identityFocus = sr(p, 0.79, 0.84) * (1 - sr(p, 0.86, 0.89))
-    tz -= identityFocus * 0.75
+    tz -= identityFocus * (isMobile ? 0.25 : 0.75)
 
     // ── CONTENT ─────────────────────────────────────────────────────────
     const contentDrift = sr(p, 0.87, 0.90) * (1 - sr(p, 0.91, 0.93))
-    tx += contentDrift * 0.6
+    tx += contentDrift * (isMobile ? 0.18 : 0.6)
 
     // ── WEBSITES ─────────────────────────────────────────────────────────
     const webIn  = sr(p, 0.92, 0.94)
     const webOut = 1 - sr(p, 0.95, 0.97)
     const web    = webIn * webOut
     if (web > 0.001) {
-      ty += (-2.4 - ty) * web * 0.8
+      ty += ((isMobile ? -1.5 : -2.4) - ty) * web * (isMobile ? 0.5 : 0.8)
       targetLookY += (0.75 - targetLookY) * web * 0.75
     }
 
     // ── PERFORMANCE ──────────────────────────────────────────────────────
     const perfWide = sr(p, 0.95, 0.97) * (1 - sr(p, 0.984, 1.0))
-    tz += perfWide * 1.4
+    tz += perfWide * (isMobile ? 0.6 : 1.4)
     ty += perfWide * 0.38
 
     // ── CTA CALM ─────────────────────────────────────────────────────────
@@ -320,7 +325,7 @@ function Camera() {
 // PLANET
 // ─────────────────────────────────────────────
 
-function Planet() {
+function Planet({ isMobile }: { isMobile: boolean }) {
   const mesh = useRef<THREE.Mesh>(null)
   const mat  = useRef<THREE.ShaderMaterial>(null)
 
@@ -348,10 +353,11 @@ function Planet() {
     if (mesh.current) {
       mesh.current.rotation.y += 0.00055
       // Subtle dual-frequency scale breathe — feels physical, not mechanical
-      const breatheScale = 1
+      // Mobile: limit scroll-driven growth so planet stays within portrait viewport
+      const breatheScale = (isMobile ? 0.88 : 1)
         + Math.sin(t * 0.18) * 0.005
         + Math.sin(t * 0.073) * 0.002
-        + p * 0.10
+        + p * (isMobile ? 0.03 : 0.10)
       mesh.current.scale.setScalar(breatheScale)
     }
   })
@@ -709,7 +715,7 @@ export default function SceneCanvas() {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
       <Canvas
-        camera={{ position: [0, 1.8, 9.8], fov: 40 }}
+        camera={{ position: isMobile ? [0, 1.4, 12.0] : [0, 1.8, 9.8], fov: isMobile ? 65 : 40 }}
         gl={{
           antialias: !isMobile, alpha: false,
           powerPreference: 'high-performance',
@@ -720,11 +726,11 @@ export default function SceneCanvas() {
         performance={{ min: 0.5 }}
       >
         <color attach="background" args={['#000000']} />
-        <Camera />
+        <Camera isMobile={isMobile} />
         <Stars count={starCount} />
         <Horizon />
         <Particles count={particleCount} />
-        <Planet />
+        <Planet isMobile={isMobile} />
         <AtmosLayer r={3.30} power={1.6} max={0.26} color={[1.0, 0.42, 0.08]} timeOffset={0.6} />
         <AtmosLayer r={4.10} power={1.1} max={0.10} color={[0.88, 0.28, 0.04]} timeOffset={1.2} />
         {!isMobile && (

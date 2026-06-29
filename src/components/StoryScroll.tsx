@@ -56,7 +56,7 @@ const GHOST = 'rgba(255,255,255,0.13)'
 // Dark halo around headlines — ensures readability at any scroll position
 const HS = '0 0 80px rgba(0,0,0,0.98), 0 0 28px rgba(0,0,0,0.90), 0 2px 10px rgba(0,0,0,0.80)'
 
-const BOOKING_HREF = 'mailto:growthcreo@gmail.com?subject=Strategy%20Call%20Request'
+const BOOKING_HREF = 'https://wa.me/96176924105?text=Hello%20CREO%2C%20I%20would%20like%20to%20book%20a%20strategy%20call'
 const WA_HREF = 'https://wa.me/96176924105'
 
 // ─── BEAT 0 — HERO ────────────────────────────────
@@ -566,7 +566,7 @@ function Beat8({ r }: { r: Ref<HTMLDivElement> }) {
       }}>
         <span style={{
           ...D,
-          fontSize: 'clamp(14rem, 34vw, 48rem)',
+          fontSize: 'clamp(6rem, 34vw, 48rem)',
           letterSpacing: '-0.08em',
           lineHeight: 1,
           color: 'transparent',
@@ -594,9 +594,11 @@ function Beat8({ r }: { r: Ref<HTMLDivElement> }) {
         <a
           ref={btnRef}
           href={BOOKING_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-era"
           style={{ pointerEvents: 'auto', display: 'inline-flex' }}
-          aria-label="Book a strategy call with CREO"
+          aria-label="Book a strategy call with CREO via WhatsApp"
           data-cursor="hover"
         >
           Book a Strategy Call
@@ -756,7 +758,7 @@ function StaticLayout() {
           <em>Now let&apos;s build your orbit.</em>
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-          <a href={BOOKING_HREF} className="btn-era" style={{ display: 'inline-flex' }}>
+          <a href={BOOKING_HREF} target="_blank" rel="noopener noreferrer" className="btn-era" style={{ display: 'inline-flex' }}>
             Book a Strategy Call
             <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true" style={{ marginLeft: '0.85em' }}>
               <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
