@@ -285,18 +285,26 @@ export default function WorkPage() {
             </p>
           </Reveal>
           <Reveal delay={180}>
-            <a
-              href="https://wa.me/96176924105?text=Hello%20CREO%2C%20I%20would%20like%20to%20start%20a%20project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-era"
-              style={{ display: 'inline-flex', pointerEvents: 'auto' }}
-            >
-              Start a Project
-              <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden>
-                <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.4rem', justifyContent: 'center', alignItems: 'center' }}>
+              <a
+                href="https://wa.me/96176924105?text=Hello%20CREO%2C%20I%20would%20like%20to%20start%20a%20project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-era"
+                style={{ display: 'inline-flex', pointerEvents: 'auto' }}
+              >
+                Start a Project
+                <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden>
+                  <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <Link href="/services" style={{
+                ...M, fontSize: '0.60rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.22)', textDecoration: 'none',
+              }}>
+                Explore Services →
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

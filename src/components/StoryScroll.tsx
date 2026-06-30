@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useRef, useEffect, useState, type Ref } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -92,7 +93,17 @@ function Beat0({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
           }}>
             Everything revolves around one thing.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', animation: 'heroReveal 0.8s ease both', animationDelay: '8.9s' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1.6rem 2.4rem', alignItems: 'center', animation: 'heroReveal 0.8s ease both', animationDelay: '8.9s' }}>
+            <Link href="/work" style={{
+              ...M, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase',
+              color: 'rgba(255,160,96,0.60)', textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+            }}>
+              View Our Work
+              <svg width="9" height="9" viewBox="0 0 11 11" fill="none" aria-hidden>
+                <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
             <ScrollThread />
           </div>
         </div>
@@ -141,7 +152,17 @@ function Beat0({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
           Everything revolves around one thing.
         </p>
 
-        <div style={{ animation: 'heroReveal 0.8s ease both', animationDelay: '8.9s' }}>
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '1.4rem 2.8rem', animation: 'heroReveal 0.8s ease both', animationDelay: '8.9s' }}>
+          <Link href="/work" style={{
+            ...M, fontSize: 'clamp(0.58rem, 0.70vw, 0.72rem)', letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: 'rgba(255,160,96,0.58)', textDecoration: 'none',
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+          }}>
+            View Our Work
+            <svg width="9" height="9" viewBox="0 0 11 11" fill="none" aria-hidden>
+              <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
           <ScrollThread />
         </div>
 
@@ -913,46 +934,19 @@ function ScrollThread() {
 
 function Chrome() {
   return (
-    <>
-      <div style={{
-        position: 'fixed', zIndex: 500, pointerEvents: 'none',
-        top: 'clamp(1.4rem, 3vw, 2.5rem)',
-        left: 'clamp(1.6rem, 3.5vw, 3.5rem)',
-      }}>
-        <span style={{ ...D, fontSize: 'clamp(0.65rem, 0.9vw, 0.85rem)', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.45)' }}>
-          CREO
-        </span>
-      </div>
-
-      <a href="mailto:growthcreo@gmail.com" className="chrome-email" style={{
-        position: 'fixed', zIndex: 500,
-        top: 'clamp(1.4rem, 3vw, 2.5rem)',
-        right: 'clamp(1.6rem, 3.5vw, 3.5rem)',
-        ...M, fontSize: 'clamp(0.52rem, 0.65vw, 0.62rem)',
-        letterSpacing: '0.14em', textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.18)', textDecoration: 'none',
-        transition: 'color 0.5s ease',
-      }}
-        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,160,96,0.65)' }}
-        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.18)' }}
-      >
-        growthcreo@gmail.com
-      </a>
-
-      <div style={{
-        position: 'fixed', zIndex: 500,
-        right: 'clamp(1rem, 1.6vw, 1.6rem)',
-        top: '50%', transform: 'translateY(-50%)',
-        width: '1px', height: '14vh',
-        background: 'rgba(255,255,255,0.04)',
-      }}>
-        <div id="progress-thumb" style={{
-          position: 'absolute', top: 0, left: 0,
-          width: '1px', height: '0%',
-          background: 'rgba(255,104,32,0.28)',
-        }} />
-      </div>
-    </>
+    <div style={{
+      position: 'fixed', zIndex: 500,
+      right: 'clamp(1rem, 1.6vw, 1.6rem)',
+      top: '50%', transform: 'translateY(-50%)',
+      width: '1px', height: '14vh',
+      background: 'rgba(255,255,255,0.04)',
+    }}>
+      <div id="progress-thumb" style={{
+        position: 'absolute', top: 0, left: 0,
+        width: '1px', height: '0%',
+        background: 'rgba(255,104,32,0.28)',
+      }} />
+    </div>
   )
 }
 

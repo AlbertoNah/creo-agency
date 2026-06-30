@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, Cormorant_Garamond, Space_Mono } from 'next/font/google'
+import Nav from '@/components/Nav'
 import './globals.css'
 
 const syne = Syne({
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${syne.variable} ${cormorant.variable} ${spaceMono.variable}`}
     >
       <body className="bg-black text-white overflow-x-hidden">
+        <Nav />
         {children}
       </body>
     </html>

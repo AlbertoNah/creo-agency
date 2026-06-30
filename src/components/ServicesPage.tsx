@@ -264,14 +264,22 @@ export default function ServicesPage() {
             </p>
           </Reveal>
           <Reveal delay={180}>
-            <a href={WA} target="_blank" rel="noopener noreferrer"
-              className="btn-era"
-              aria-label="Book a strategy call via WhatsApp">
-              Start a Project
-              <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden>
-                <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.4rem', justifyContent: 'center', alignItems: 'center' }}>
+              <a href={WA} target="_blank" rel="noopener noreferrer"
+                className="btn-era"
+                aria-label="Book a strategy call via WhatsApp">
+                Start a Project
+                <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden>
+                  <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <Link href="/about" style={{
+                ...M, fontSize: '0.60rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.22)', textDecoration: 'none',
+              }}>
+                About CREO →
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

@@ -389,6 +389,31 @@ body::before {
   border-color: rgba(255, 104, 32, 0.55);
 }
 
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 160, 96, 0.45);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after { transform: scaleX(1); }
+.nav-link[data-active='true'] { color: rgba(255, 160, 96, 0.95) !important; }
+.nav-link[data-active='true']::after {
+  transform: scaleX(1);
+  background: rgba(255, 104, 32, 0.40);
+}
+
 @media (max-width: 900px) {
   .nav-desktop-links { display: none; }
   .nav-hamburger     { display: block; }
