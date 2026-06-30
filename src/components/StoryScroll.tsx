@@ -60,7 +60,45 @@ const BOOKING_HREF = 'https://wa.me/96176924105?text=Hello%20CREO%2C%20I%20would
 const WA_HREF = 'https://wa.me/96176924105'
 
 // ─── BEAT 0 — HERO ────────────────────────────────
-function Beat0({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat0({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+        <div style={{ width: '100%', textAlign: 'center', padding: '0 2.5rem 12vh' }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            gap: '0.5rem', marginBottom: '1.4rem',
+            animation: 'heroReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) both',
+            animationDelay: '5.1s',
+          }}>
+            <span style={{ display: 'block', width: '16px', height: '1px', background: 'rgba(255,104,32,0.4)' }} />
+            <span style={{ ...M, fontSize: '0.60rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,160,96,0.55)' }}>
+              Creative Agency · Beirut
+            </span>
+            <span style={{ display: 'block', width: '16px', height: '1px', background: 'rgba(255,104,32,0.4)' }} />
+          </div>
+          <h1 style={{
+            ...D, fontSize: '5.5rem', lineHeight: 0.86,
+            letterSpacing: '-0.04em', color: '#FFFFFF', textShadow: HS,
+            marginBottom: '1.4rem',
+            animation: 'heroReveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) both',
+            animationDelay: '5.9s',
+          }}>CREO</h1>
+          <p style={{
+            ...I, fontSize: '1.25rem', color: 'rgba(255,255,255,0.22)',
+            lineHeight: 1.55, textShadow: '0 0 40px rgba(0,0,0,0.92)',
+            marginBottom: '2.4rem',
+            animation: 'heroReveal 1.2s ease both', animationDelay: '7.5s',
+          }}>
+            Everything revolves around one thing.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', animation: 'heroReveal 0.8s ease both', animationDelay: '8.9s' }}>
+            <ScrollThread />
+          </div>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-end', justifyContent: 'flex-start' }}>
       <div style={{ padding: 'clamp(1.8rem, 4.5vw, 4.5rem)', paddingBottom: 'clamp(3rem, 7vh, 6rem)', maxWidth: 'clamp(300px, 62vw, 700px)' }}>
@@ -113,7 +151,21 @@ function Beat0({ r }: { r: Ref<HTMLDivElement> }) {
 }
 
 // ─── BEAT 1 — ATTENTION ───────────────────────────
-function Beat1({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat1({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2rem' }}>
+          <p style={{ ...M, fontSize: '0.60rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.20)', marginBottom: '1.2rem' }}>
+            The problem
+          </p>
+          <h2 style={{ ...D, fontSize: '4rem', lineHeight: 0.87, letterSpacing: '-0.04em', color: '#FFFFFF', textShadow: HS }}>
+            ATTENTION
+          </h2>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'flex-start', paddingLeft: 'clamp(2rem, 6vw, 8rem)' }}>
       <div>
@@ -129,7 +181,21 @@ function Beat1({ r }: { r: Ref<HTMLDivElement> }) {
 }
 
 // ─── BEAT 2 — ENGINEERED ──────────────────────────
-function Beat2({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat2({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2rem' }}>
+          <p style={{ ...I, fontSize: '1.65rem', lineHeight: 1.3, color: 'rgba(255,255,255,0.28)', textShadow: HS, marginBottom: '0.1em' }}>
+            is no longer given.
+          </p>
+          <p style={{ ...I, fontSize: '1.65rem', lineHeight: 1.3, color: AMBER, textShadow: HS }}>
+            It is engineered.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-end', justifyContent: 'flex-end' }}>
       <div style={{ padding: 'clamp(1.8rem, 4.5vw, 4.5rem)', paddingBottom: 'clamp(3rem, 8vh, 7rem)', textAlign: 'right', maxWidth: 'clamp(260px, 52vw, 600px)' }}>
@@ -145,7 +211,28 @@ function Beat2({ r }: { r: Ref<HTMLDivElement> }) {
 }
 
 // ─── BEAT 3 — CREO REVEAL ─────────────────────────
-function Beat3({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat3({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2rem' }}>
+          <p style={{ ...M, fontSize: '0.60rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,160,96,0.42)', marginBottom: '1.2rem' }}>
+            Beirut, Lebanon
+          </p>
+          <h2 style={{
+            ...D, fontSize: '4.5rem', lineHeight: 0.86,
+            letterSpacing: '-0.04em', color: AMBER, textShadow: HS,
+            filter: 'drop-shadow(0 0 50px rgba(255,104,32,0.15))',
+          }}>
+            CREO.
+          </h2>
+          <p style={{ ...I, fontSize: '1.1rem', color: 'rgba(255,255,255,0.16)', textShadow: '0 0 40px rgba(0,0,0,0.95)', marginTop: '1.4rem', lineHeight: 1.6 }}>
+            A creative force built to put your brand at the center.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 'clamp(5rem, 10vh, 12rem)' }}>
       <div style={{ textAlign: 'center' }}>
@@ -457,7 +544,22 @@ function ProofMockup({ r }: { r: React.RefObject<HTMLDivElement> }) {
 
 // ─── SERVICE BEATS ────────────────────────────────
 
-function Beat4({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat4({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2.5rem' }}>
+          <Label text="01 / 04" align="center" />
+          <h3 style={{ ...D, fontSize: '3.5rem', lineHeight: 0.88, letterSpacing: '-0.035em', color: '#FFFFFF', textShadow: HS, marginBottom: '0.7rem' }}>
+            IDENTITY
+          </h3>
+          <p style={{ ...I, fontSize: '1.2rem', color: GHOST, textShadow: '0 0 40px rgba(0,0,0,0.92)' }}>
+            Creating gravity.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}>
       <div style={{ padding: 'clamp(1.8rem, 4.5vw, 4.5rem)', paddingTop: 'clamp(3.5rem, 9vh, 9rem)' }}>
@@ -473,7 +575,22 @@ function Beat4({ r }: { r: Ref<HTMLDivElement> }) {
   )
 }
 
-function Beat5({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat5({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2.5rem' }}>
+          <Label text="02 / 04" align="center" />
+          <h3 style={{ ...D, fontSize: '3.5rem', lineHeight: 0.88, letterSpacing: '-0.035em', color: '#FFFFFF', textShadow: HS, marginBottom: '0.7rem' }}>
+            CONTENT
+          </h3>
+          <p style={{ ...I, fontSize: '1.2rem', color: GHOST, textShadow: '0 0 40px rgba(0,0,0,0.92)' }}>
+            Building attention.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
       <div style={{ padding: 'clamp(1.8rem, 4.5vw, 4.5rem)', textAlign: 'right' }}>
@@ -489,7 +606,22 @@ function Beat5({ r }: { r: Ref<HTMLDivElement> }) {
   )
 }
 
-function Beat6({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat6({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2.5rem' }}>
+          <Label text="03 / 04" align="center" />
+          <h3 style={{ ...D, fontSize: '3.5rem', lineHeight: 0.88, letterSpacing: '-0.035em', color: '#FFFFFF', textShadow: HS, marginBottom: '0.7rem' }}>
+            WEB
+          </h3>
+          <p style={{ ...I, fontSize: '1.2rem', color: GHOST, textShadow: '0 0 40px rgba(0,0,0,0.92)' }}>
+            Creating experiences.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-end', justifyContent: 'center', paddingBottom: 'clamp(2.5rem, 6vh, 7rem)' }}>
       <div style={{ textAlign: 'center' }}>
@@ -505,7 +637,22 @@ function Beat6({ r }: { r: Ref<HTMLDivElement> }) {
   )
 }
 
-function Beat7({ r }: { r: Ref<HTMLDivElement> }) {
+function Beat7({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', padding: '0 2.5rem' }}>
+          <Label text="04 / 04" align="center" />
+          <h3 style={{ ...D, fontSize: '3rem', lineHeight: 0.88, letterSpacing: '-0.035em', color: '#FFFFFF', textShadow: HS, marginBottom: '0.7rem' }}>
+            PERFORMANCE
+          </h3>
+          <p style={{ ...I, fontSize: '1.2rem', color: GHOST, textShadow: '0 0 40px rgba(0,0,0,0.92)' }}>
+            Scaling brands.
+          </p>
+        </div>
+      </div>
+    )
+  }
   return (
     <div ref={r} className="beat" style={{ alignItems: 'flex-start', justifyContent: 'flex-end' }}>
       <div style={{ padding: 'clamp(1.8rem, 4.5vw, 4.5rem)', paddingTop: 'clamp(3.5rem, 9vh, 9rem)', textAlign: 'right' }}>
@@ -523,11 +670,12 @@ function Beat7({ r }: { r: Ref<HTMLDivElement> }) {
 
 // ─── BEAT 8 — FINAL CTA ───────────────────────────
 // Ghost CREO fills the frame. CTA floats in its own gravity well.
-// Magnetic button: slight pull toward cursor.
-function Beat8({ r }: { r: Ref<HTMLDivElement> }) {
+// Magnetic button: slight pull toward cursor (desktop only).
+function Beat8({ r, isMobile }: { r: Ref<HTMLDivElement>; isMobile: boolean }) {
   const btnRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
+    if (isMobile) return
     const btn = btnRef.current
     if (!btn) return
 
@@ -551,7 +699,90 @@ function Beat8({ r }: { r: Ref<HTMLDivElement> }) {
       btn.removeEventListener('mousemove',  onMove)
       btn.removeEventListener('mouseleave', onLeave)
     }
-  }, [])
+  }, [isMobile])
+
+  if (isMobile) {
+    return (
+      <div ref={r} className="beat" style={{
+        alignItems: 'center', justifyContent: 'center',
+        background: 'radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.30) 60%, transparent 85%)',
+      }}>
+        {/* Ghost CREO — even more reduced on mobile so CTA text is primary */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          overflow: 'hidden', pointerEvents: 'none',
+        }}>
+          <span style={{
+            ...D, fontSize: 'clamp(8rem, 70vw, 16rem)',
+            letterSpacing: '-0.08em', lineHeight: 1,
+            color: 'transparent',
+            WebkitTextStroke: '1px rgba(255,104,32,0.022)',
+            userSelect: 'none', whiteSpace: 'nowrap',
+            position: 'absolute',
+          }}>
+            CREO
+          </span>
+        </div>
+
+        {/* CTA content */}
+        <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', width: 'min(88vw, 400px)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+          <div style={{ width: '1px', height: '28px', background: 'linear-gradient(to bottom, transparent, rgba(255,104,32,0.30))', marginBottom: '1.8rem' }} />
+
+          <p style={{ ...I, fontSize: '1.3rem', lineHeight: 1.3, color: 'rgba(255,255,255,0.58)', textShadow: HS, marginBottom: '0.12em' }}>
+            The center has been found.
+          </p>
+          <p style={{ ...I, fontSize: '1.45rem', lineHeight: 1.3, color: AMBER, textShadow: HS, marginBottom: '2.2rem' }}>
+            Now let&apos;s build your orbit.
+          </p>
+
+          <a
+            ref={btnRef}
+            href={BOOKING_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-era"
+            style={{ pointerEvents: 'auto', display: 'inline-flex' }}
+            aria-label="Book a strategy call with CREO via WhatsApp"
+            data-cursor="hover"
+          >
+            Book a Strategy Call
+            <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <path d="M1 10L10 1M10 1H4M10 1V7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            gap: '1rem', marginTop: '1.2rem', pointerEvents: 'auto',
+          }}>
+            <a
+              href="mailto:growthcreo@gmail.com"
+              className="link-underline"
+              style={{ ...M, fontSize: '0.68rem', letterSpacing: '0.13em', color: 'rgba(255,160,96,0.55)', textDecoration: 'none' }}
+            >
+              growthcreo@gmail.com
+            </a>
+            <span style={{ color: 'rgba(255,255,255,0.10)', userSelect: 'none' }}>·</span>
+            <a
+              href={WA_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline"
+              style={{ ...M, fontSize: '0.68rem', letterSpacing: '0.13em', color: 'rgba(255,160,96,0.55)', textDecoration: 'none' }}
+            >
+              WhatsApp
+            </a>
+          </div>
+
+          <p style={{ ...M, marginTop: '2.5rem', fontSize: '0.52rem', letterSpacing: '0.20em', color: 'rgba(255,255,255,0.07)' }}>
+            CREO — Beirut, Lebanon — 2026
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div ref={r} className="beat" style={{
@@ -782,6 +1013,9 @@ const BEATS = [Beat0, Beat1, Beat2, Beat3, Beat4, Beat5, Beat6, Beat7, Beat8]
 
 export default function StoryScroll() {
   const [reducedMotion, setReducedMotion] = useState(false)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && (window.innerWidth < 769 || navigator.maxTouchPoints > 1)
+  )
   const container = useRef<HTMLDivElement>(null)
   const refs      = useRef<(HTMLDivElement | null)[]>([])
   const proofRef  = useRef<HTMLDivElement>(null)
@@ -789,6 +1023,12 @@ export default function StoryScroll() {
 
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  }, [])
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 769 || navigator.maxTouchPoints > 1)
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
   }, [])
 
   useEffect(() => {
@@ -849,7 +1089,7 @@ export default function StoryScroll() {
       <ProofMockup r={proofRef} />
       <div ref={container} style={{ height: '1000vh', position: 'relative', zIndex: 10 }}>
         {BEATS.map((Beat, i) => (
-          <Beat key={i} r={(el: HTMLDivElement | null) => { refs.current[i] = el }} />
+          <Beat key={i} r={(el: HTMLDivElement | null) => { refs.current[i] = el }} isMobile={isMobile} />
         ))}
       </div>
     </>

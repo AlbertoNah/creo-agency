@@ -330,23 +330,25 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  /* Mobile: smaller and lower, clear of Identity text (top-left) */
+  /* Mobile: centered and 80% larger than previous 0.72 scaling */
   .proof-overlay {
-    right: clamp(3%, 5vw, 6%) !important;
-    top: auto !important;
-    bottom: 14vh;
-    transform: none !important;
-    transform: scale(0.72) !important;
-    transform-origin: bottom right;
+    right: auto !important;
+    left: 50% !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) scale(1.30) !important;
+    transform-origin: center center;
   }
 }
 
-/* ---- Mobile touch target sizing ---- */
+/* ---- Mobile touch target sizing + higher contrast ---- */
 @media (max-width: 768px) {
   .btn-era {
     padding: 1.35em 2.6em;
-    font-size: 0.68rem;
-    min-height: 48px;
+    font-size: 0.72rem;
+    min-height: 52px;
+    border-color: rgba(255, 104, 32, 0.45);
+    color: rgba(255, 255, 255, 0.88);
   }
 }
 

@@ -253,7 +253,7 @@ function Camera({ isMobile }: { isMobile: boolean }) {
 
     // Mobile keeps camera farther back so the planet stays within the
     // narrow portrait viewport throughout the entire scroll journey.
-    let tz = isMobile ? 12.0 - p * 1.5 : 9.8 - p * 5.2
+    let tz = isMobile ? 14.0 - p * 1.8 : 9.8 - p * 5.2
     let ty = isMobile ? 1.4 - p * 1.0  : 1.8 - p * 1.5
     let tx = Math.sin(p * Math.PI * 2.0) * (isMobile ? 0.25 : 1.55)
     let targetLookY = -0.15
@@ -354,10 +354,10 @@ function Planet({ isMobile }: { isMobile: boolean }) {
       mesh.current.rotation.y += 0.00055
       // Subtle dual-frequency scale breathe — feels physical, not mechanical
       // Mobile: limit scroll-driven growth so planet stays within portrait viewport
-      const breatheScale = (isMobile ? 0.88 : 1)
+      const breatheScale = (isMobile ? 0.70 : 1)
         + Math.sin(t * 0.18) * 0.005
         + Math.sin(t * 0.073) * 0.002
-        + p * (isMobile ? 0.03 : 0.10)
+        + p * (isMobile ? 0.02 : 0.10)
       mesh.current.scale.setScalar(breatheScale)
     }
   })
@@ -496,7 +496,7 @@ function BeatRing({ radius, tube, tiltX, tiltZ, speed, fadeIn, fadeOut }: {
 // CTA calm: rotation drops to near-zero as the universe settles
 // ─────────────────────────────────────────────
 
-function Particles({ count }: { count: number }) {
+function Particles({ count, isMobile }: { count: number; isMobile: boolean }) {
   const pts = useRef<THREE.Points>(null)
   const mat = useRef<THREE.ShaderMaterial>(null)
 
@@ -556,10 +556,10 @@ function Particles({ count }: { count: number }) {
 
     if (mat.current) {
       const orbitFraction = c01((t - 5.0) / 8.5)
-      const chaosAlpha    = c01((t - 2.5) / 3.0) * 0.065
-      const orbitAlpha    = orbitFraction * 0.09
-      const growthAlpha   = sr(p, 0.97, 1.0) * 0.018
-      mat.current.uniforms.uAlpha.value = chaosAlpha + orbitAlpha + growthAlpha + p * 0.095
+      const chaosAlpha    = c01((t - 2.5) / 3.0) * (isMobile ? 0.040 : 0.065)
+      const orbitAlpha    = orbitFraction * (isMobile ? 0.055 : 0.09)
+      const growthAlpha   = sr(p, 0.97, 1.0) * (isMobile ? 0.012 : 0.018)
+      mat.current.uniforms.uAlpha.value = chaosAlpha + orbitAlpha + growthAlpha + p * (isMobile ? 0.058 : 0.095)
 
       const identityBlend = sr(p, 0.79, 0.84) * (1 - sr(p, 0.88, 0.91))
       const adsBlend      = sr(p, 0.95, 0.965) * (1 - sr(p, 0.975, 0.985))
@@ -715,7 +715,7 @@ export default function SceneCanvas() {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
       <Canvas
-        camera={{ position: isMobile ? [0, 1.4, 12.0] : [0, 1.8, 9.8], fov: isMobile ? 65 : 40 }}
+        camera={{ position: isMobile ? [0, 1.4, 14.0] : [0, 1.8, 9.8], fov: isMobile ? 65 : 40 }}
         gl={{
           antialias: !isMobile, alpha: false,
           powerPreference: 'high-performance',
@@ -729,10 +729,10 @@ export default function SceneCanvas() {
         <Camera isMobile={isMobile} />
         <Stars count={starCount} />
         <Horizon />
-        <Particles count={particleCount} />
+        <Particles count={particleCount} isMobile={isMobile} />
         <Planet isMobile={isMobile} />
-        <AtmosLayer r={3.30} power={1.6} max={0.26} color={[1.0, 0.42, 0.08]} timeOffset={0.6} />
-        <AtmosLayer r={4.10} power={1.1} max={0.10} color={[0.88, 0.28, 0.04]} timeOffset={1.2} />
+        <AtmosLayer r={3.30} power={1.6} max={isMobile ? 0.14 : 0.26} color={[1.0, 0.42, 0.08]} timeOffset={0.6} />
+        <AtmosLayer r={4.10} power={1.1} max={isMobile ? 0.06 : 0.10} color={[0.88, 0.28, 0.04]} timeOffset={1.2} />
         {!isMobile && (
           <AtmosLayer r={5.80} power={0.7} max={0.05} color={[0.7, 0.20, 0.02]} timeOffset={2.2} />
         )}
