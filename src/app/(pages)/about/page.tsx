@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import AboutPage from '@/components/AboutPage'
 
 export const metadata: Metadata = {
-  title: 'About — CREO',
+  title: 'About',
   description: 'Built in Lebanon for brands that want to be impossible to ignore. The story of CREO Creative Agency.',
   openGraph: {
     title: 'About — CREO Creative Agency',

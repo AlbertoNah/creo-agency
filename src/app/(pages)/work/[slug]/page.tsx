@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(params.slug)
   if (!project) return {}
   return {
-    title: `${project.name} — CREO`,
+    title: project.name,
     description: project.description,
     openGraph: {
       title: `${project.name} — CREO Creative Agency`,
